@@ -15,7 +15,7 @@ export function StationsList({ stations }: Props) {
         Showing <span className="font-medium">{stations.length}</span> station(s)
       </div>
 
-      <ul className="divide-y rounded-md border">
+      <ul className="divide-y rounded-md border mb-4">
         {stations.map((st) => {
           const active = st.id === selectedStationId;
 

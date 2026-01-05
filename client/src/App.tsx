@@ -26,7 +26,7 @@ export default function App() {
       <div className="h-full grid grid-cols-1 md:grid-cols-[380px_1fr] gap-4 p-4">
         <aside className="space-y-4">
           <div className="space-y-1">
-            <h1 className="text-xl font-semibold">DE Train Stations</h1>
+            <h1 className="text-xl font-semibold">Ali Zareian</h1>
             <p className="text-sm text-gray-600">Leaflet map + filter + list interaction</p>
           </div>
 
@@ -47,8 +47,7 @@ export default function App() {
           {!isLoading && !isError && <StationsList stations={filtered} />}
         </aside>
 
-        <main className="min-h-[300px]">
-          {/* Ensure the parent has height; this area fills remaining space */}
+        <main className="min-h-[300px] mb-4">
           <div className="h-full">
             <StationsMap stations={filtered} />
           </div>
