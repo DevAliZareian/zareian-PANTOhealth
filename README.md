@@ -1,73 +1,60 @@
-# React + TypeScript + Vite
+# **PANTOhealth Sample Project**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **React-based Train Station Visualizer** that helps users interact with train station data in Germany, displaying stations on a map, and allowing for filtering by city. This app is built with a modern and responsive UI using **React**, **Leaflet.js**, and **Zustand** for state management.
 
-Currently, two official plugins are available:
+![UI-app](https://github.com/DevAliZareian/zareian-PANTOhealth/blob/main/public/assets/UI-app.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## **Features**
 
-## React Compiler
+- [x] **Train Station Visualization** – Display stations on an interactive map using **Leaflet.js**
+- [x] **City Filter** – Filter stations by city to focus on specific regions
+- [x] **Map Interaction** – Click on the stations in the list to zoom and highlight the corresponding map marker
+- [x] **Station List** – View a list of stations with their names and cities
+- [x] **Responsive UI** – Seamless experience across devices, from desktop to mobile
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## **Technologies**
 
-## Expanding the ESLint configuration
+- **React 18** (Frontend Framework)
+- **TypeScript** (Static Typing)
+- **Vite** (Build Tool)
+- **Tailwind CSS** (Styling)
+- **Leaflet.js** (Map Rendering)
+- **Zustand** (State Management)
+- **React Query** (Data Fetching)
+- **Axios** (HTTP Requests)
+- **Jest** (Testing)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## **Installation**
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+To run the project locally:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+```bash
+# Clone the repository
+git clone https://github.com/DevAliZareian/zareian-PANTOhealth.git
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Navigate into the project directory
+cd zareian-PANTOhealth
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## **Usage**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **View Map**: The map will show the locations of all train stations in Germany.
+- **Filter Stations by City**: Use the input field to filter the stations by city name (e.g., "Berlin").
+- **Click on a Station**: Clicking on a station name from the list will zoom the map to that station’s location and highlight the marker.
+- **Responsive Design**: The app is responsive and works well across different screen sizes, from desktops to mobile devices.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## **Testing**
+
+The application is tested using **Jest**. To run the tests:
+
+```bash
+# Run tests
+npm test
 ```
+
