@@ -1,4 +1,4 @@
-# **PANTOhealth Sample Project**
+# **PANTOhealth Sample Project** live URL: https://pantohealth.devalizareian.ir/
 
 A **React-based Train Station Visualizer** that helps users interact with train station data in Germany, displaying stations on a map, and allowing for filtering by city. This app is built with a modern and responsive UI using **React**, **Leaflet.js**, and **Zustand** for state management.
 
@@ -14,7 +14,7 @@ A **React-based Train Station Visualizer** that helps users interact with train 
 
 ## **Technologies**
 
-- **React 18** (Frontend Framework)
+- **React** (Frontend Framework)
 - **TypeScript** (Static Typing)
 - **Vite** (Build Tool)
 - **Tailwind CSS** (Styling)
