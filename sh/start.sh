@@ -6,3 +6,4 @@ docker-compose up --build -d
 
 echo "Application started successfully!"
 echo "Access the application at: http://localhost:4023"
+

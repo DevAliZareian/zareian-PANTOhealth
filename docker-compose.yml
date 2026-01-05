@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   zareian-pantohealth:
@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "4023:80"
+      - "4011:4011"
     environment:
       - NODE_ENV=production
     restart: unless-stopped

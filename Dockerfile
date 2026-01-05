@@ -1,33 +1,31 @@
-# Multi-stage build for React/Vite application
-
-# Build stage
+# ===== Build stage =====
 FROM node:18-alpine AS builder
-
 WORKDIR /app
 
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci --only=production
+# Install all dependencies (dev + prod)
+RUN npm ci
 
 # Copy source code
 COPY . .
 
-# Build the application
+# Build TypeScript + Vite
 RUN npm run build
 
-# Production stage
-FROM nginx:alpine
+# ===== Production stage =====
+FROM node:18-alpine
+WORKDIR /app
 
-# Copy built application from builder stage
-COPY --from=builder /app/dist /usr/share/nginx/html
+# Install a simple static server
+RUN npm install -g serve
 
-# Copy custom nginx configuration
-COPY nginx.conf /etc/nginx/nginx.conf
+# Copy build output
+COPY --from=builder /app/dist /app/dist
 
-# Expose port 80
-EXPOSE 80
+# Expose any port (Swarm host network will map)
+EXPOSE 4011
 
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Start server
+CMD ["serve", "-s", "dist", "-l", "4011"]
