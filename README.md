@@ -1,42 +1,73 @@
-# **PANTOhealth Sample Project**
+# React + TypeScript + Vite
 
-A **React-based Train Station Visualizer** that helps users interact with train station data in Germany, displaying stations on a map, and allowing for filtering by city. This app is built with a modern and responsive UI using **React**, **Leaflet.js**, and **Zustand** for state management.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-![UI-app](https://github.com/DevAliZareian/zareian-PANTOhealth/blob/main/resources/UI-app.png)
+Currently, two official plugins are available:
 
-## **Features**
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-- [x] **Train Station Visualization** – Display stations on an interactive map using **Leaflet.js**
-- [x] **City Filter** – Filter stations by city to focus on specific regions
-- [x] **Map Interaction** – Click on the stations in the list to zoom and highlight the corresponding map marker
-- [x] **Station List** – View a list of stations with their names and cities
-- [x] **Responsive UI** – Seamless experience across devices, from desktop to mobile
+## React Compiler
 
-## **Technologies**
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-- **React 18** (Frontend Framework)
-- **TypeScript** (Static Typing)
-- **Vite** (Build Tool)
-- **Tailwind CSS** (Styling)
-- **Leaflet.js** (Map Rendering)
-- **Zustand** (State Management)
-- **React Query** (Data Fetching)
-- **Axios** (HTTP Requests)
-- **Jest** (Testing)
+## Expanding the ESLint configuration
 
-## **Installation**
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-To run the project locally:
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-```bash
-# Clone the repository
-git clone https://github.com/DevAliZareian/zareian-PANTOhealth.git
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-# Navigate into the project directory
-cd zareian-PANTOhealth
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
 
-# Install dependencies
-npm install
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-# Start the development server
-npm run dev
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
