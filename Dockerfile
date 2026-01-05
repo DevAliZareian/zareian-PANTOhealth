@@ -1,5 +1,5 @@
 # ===== Build stage =====
-FROM node:18-alpine AS builder
+FROM node:20-alpine AS builder
 WORKDIR /app
 
 # Copy package files
@@ -15,17 +15,18 @@ COPY . .
 RUN npm run build
 
 # ===== Production stage =====
-FROM node:18-alpine
+FROM node:20-alpine
 WORKDIR /app
 
-# Install a simple static server
-RUN npm install -g serve
+# Install lightweight HTTP server
+RUN npm install -g http-server --registry=https://mirror-npm.runflare.com
 
-# Copy build output
+# Copy build output from builder
 COPY --from=builder /app/dist /app/dist
 
-# Expose any port (Swarm host network will map)
+# Expose any port (Docker can map to host)
 EXPOSE 4011
 
-# Start server
-CMD ["serve", "-s", "dist", "-l", "4011"]
+# Start http-server
+CMD ["http-server", "dist", "-p", "4011", "-c-1"] 
+# -c-1 disables caching
