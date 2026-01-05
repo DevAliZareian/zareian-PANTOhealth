@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  zareian-pantohealth:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4023:80"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    container_name: zareian-pantohealth-app
